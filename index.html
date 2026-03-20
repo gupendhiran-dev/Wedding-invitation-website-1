@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Priya & Arjun — Forever Begins</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- LOADING SCREEN -->
+  <!-- ══════════════════════════════════════ -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-petals">
+        <div class="loader-petal" style="--i:0"></div>
+        <div class="loader-petal" style="--i:1"></div>
+        <div class="loader-petal" style="--i:2"></div>
+        <div class="loader-petal" style="--i:3"></div>
+        <div class="loader-petal" style="--i:4"></div>
+        <div class="loader-petal" style="--i:5"></div>
+        <div class="loader-petal" style="--i:6"></div>
+        <div class="loader-petal" style="--i:7"></div>
+      </div>
+      <p class="loader-text">A love story begins…</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- MUSIC TOGGLE -->
+  <!-- ══════════════════════════════════════ -->
+  <button id="music-toggle" aria-label="Toggle music">
+    <svg class="music-icon play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polygon points="5 3 19 12 5 21 5 3"/>
+    </svg>
+    <svg class="music-icon pause-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="6" y1="4" x2="6" y2="20"/><line x1="18" y1="4" x2="18" y2="20"/>
+    </svg>
+    <span class="music-label">Music</span>
+  </button>
+  <audio id="bg-music" loop>
+    <!-- Placeholder — replace with actual audio file path -->
+    <!-- <source src="assets/music.mp3" type="audio/mpeg"> -->
+  </audio>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 1: HERO -->
+  <!-- ══════════════════════════════════════ -->
+  <section id="hero" class="section">
+    <canvas id="three-canvas"></canvas>
+
+    <!-- Parallax Sky -->
+    <div class="parallax-layer layer-sky" data-speed="0.1">
+      <div class="sky-gradient"></div>
+      <div class="stars-container" id="stars"></div>
+    </div>
+
+    <!-- Parallax Clouds -->
+    <div class="parallax-layer layer-clouds" data-speed="0.25">
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
+      <div class="cloud cloud-3"></div>
+      <div class="cloud cloud-4"></div>
+    </div>
+
+    <!-- Parallax Mountains / Hills -->
+    <div class="parallax-layer layer-mountains" data-speed="0.4">
+      <svg class="mountains-svg" viewBox="0 0 1440 400" preserveAspectRatio="none">
+        <path d="M0,400 L0,250 Q120,120 240,200 Q360,280 480,160 Q600,40 720,120 Q840,200 960,80 Q1080,0 1200,100 Q1320,200 1440,140 L1440,400 Z" fill="#c9a7b2" opacity="0.5"/>
+        <path d="M0,400 L0,300 Q180,180 360,240 Q540,300 720,200 Q900,100 1080,180 Q1260,260 1440,220 L1440,400 Z" fill="#d4b8c1" opacity="0.6"/>
+      </svg>
+    </div>
+
+    <!-- Parallax Trees/Foliage -->
+    <div class="parallax-layer layer-foliage" data-speed="0.6">
+      <div class="foliage-left"></div>
+      <div class="foliage-right"></div>
+    </div>
+
+    <!-- Floating Petals -->
+    <div class="petals-container" id="petals"></div>
+
+    <!-- Floating Butterflies -->
+    <div class="butterflies-container" id="butterflies">
+      <div class="butterfly b1">
+        <div class="wing left"></div>
+        <div class="wing right"></div>
+      </div>
+      <div class="butterfly b2">
+        <div class="wing left"></div>
+        <div class="wing right"></div>
+      </div>
+      <div class="butterfly b3">
+        <div class="wing left"></div>
+        <div class="wing right"></div>
+      </div>
+    </div>
+
+    <!-- Birds -->
+    <div class="birds-container" id="birds">
+      <svg class="bird bird-1" viewBox="0 0 60 20" fill="none">
+        <path d="M30,10 Q20,2 5,8 Q20,6 30,10 Q40,6 55,8 Q40,2 30,10Z" fill="rgba(120,60,80,0.6)"/>
+      </svg>
+      <svg class="bird bird-2" viewBox="0 0 60 20" fill="none">
+        <path d="M30,10 Q20,2 5,8 Q20,6 30,10 Q40,6 55,8 Q40,2 30,10Z" fill="rgba(120,60,80,0.5)"/>
+      </svg>
+      <svg class="bird bird-3" viewBox="0 0 60 20" fill="none">
+        <path d="M30,10 Q20,2 5,8 Q20,6 30,10 Q40,6 55,8 Q40,2 30,10Z" fill="rgba(120,60,80,0.4)"/>
+      </svg>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <div class="hero-tagline">Together Forever</div>
+      <div class="hero-names">
+        <span class="name-bride">Priya</span>
+        <span class="name-and">&amp;</span>
+        <span class="name-groom">Arjun</span>
+      </div>
+      <div class="hero-divider">
+        <span class="divider-line"></span>
+        <svg class="divider-flower" viewBox="0 0 40 40">
+          <circle cx="20" cy="20" r="4" fill="#c9748a"/>
+          <ellipse cx="20" cy="10" rx="4" ry="7" fill="#e8a0b0" transform="rotate(0,20,20)"/>
+          <ellipse cx="20" cy="10" rx="4" ry="7" fill="#e8a0b0" transform="rotate(45,20,20)"/>
+          <ellipse cx="20" cy="10" rx="4" ry="7" fill="#e8a0b0" transform="rotate(90,20,20)"/>
+          <ellipse cx="20" cy="10" rx="4" ry="7" fill="#e8a0b0" transform="rotate(135,20,20)"/>
+          <ellipse cx="20" cy="10" rx="4" ry="7" fill="#e8a0b0" transform="rotate(180,20,20)"/>
+          <ellipse cx="20" cy="10" rx="4" ry="7" fill="#e8a0b0" transform="rotate(225,20,20)"/>
+          <ellipse cx="20" cy="10" rx="4" ry="7" fill="#e8a0b0" transform="rotate(270,20,20)"/>
+          <ellipse cx="20" cy="10" rx="4" ry="7" fill="#e8a0b0" transform="rotate(315,20,20)"/>
+        </svg>
+        <span class="divider-line"></span>
+      </div>
+      <div class="hero-date">
+        <span>Saturday, the 14th of February</span>
+        <span class="hero-year">2026</span>
+      </div>
+      <div class="hero-location">Grand Leela Palace, Chennai</div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <span>Scroll to explore</span>
+      <div class="scroll-arrow">
+        <svg viewBox="0 0 24 36" fill="none">
+          <rect x="5" y="1" width="14" height="22" rx="7" stroke="rgba(200,140,160,0.8)" stroke-width="1.5"/>
+          <circle class="scroll-dot" cx="12" cy="8" r="3" fill="rgba(200,140,160,0.9)"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 2: BRIDE & GROOM INTRO -->
+  <!-- ══════════════════════════════════════ -->
+  <section id="couple" class="section">
+    <div class="section-bg-florals"></div>
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="eyebrow">The Happy Couple</p>
+        <h2 class="section-title">Two Souls, One Destiny</h2>
+      </div>
+      <div class="couple-grid">
+        <div class="couple-card reveal-left">
+          <div class="couple-photo-wrap">
+            <div class="photo-ring outer"></div>
+            <div class="photo-ring inner"></div>
+            <div class="couple-photo placeholder">
+              <div class="photo-placeholder-icon">
+                <svg viewBox="0 0 80 80" fill="none">
+                  <circle cx="40" cy="30" r="18" fill="rgba(200,140,160,0.3)" stroke="rgba(200,140,160,0.6)" stroke-width="1.5"/>
+                  <path d="M10,75 Q10,55 40,55 Q70,55 70,75" fill="rgba(200,140,160,0.3)" stroke="rgba(200,140,160,0.6)" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <span class="photo-label">Bride's Photo</span>
+            </div>
+            <div class="photo-sparkle s1"></div>
+            <div class="photo-sparkle s2"></div>
+            <div class="photo-sparkle s3"></div>
+          </div>
+          <h3 class="couple-name">Priya Sharma</h3>
+          <p class="couple-desc">A dreamer with a heart full of warmth, whose smile lights up every room. Daughter of Mr. & Mrs. Rajesh Sharma.</p>
+        </div>
+
+        <div class="couple-center-ornament reveal-up">
+          <div class="mandala-ring"></div>
+          <svg class="heart-ornament" viewBox="0 0 100 90">
+            <path d="M50,80 L15,45 Q0,25 15,12 Q30,0 50,20 Q70,0 85,12 Q100,25 85,45 Z" fill="rgba(200,140,160,0.7)"/>
+          </svg>
+          <div class="mandala-ring inner-ring"></div>
+        </div>
+
+        <div class="couple-card reveal-right">
+          <div class="couple-photo-wrap">
+            <div class="photo-ring outer"></div>
+            <div class="photo-ring inner"></div>
+            <div class="couple-photo placeholder">
+              <div class="photo-placeholder-icon">
+                <svg viewBox="0 0 80 80" fill="none">
+                  <circle cx="40" cy="30" r="18" fill="rgba(150,120,180,0.3)" stroke="rgba(150,120,180,0.6)" stroke-width="1.5"/>
+                  <path d="M10,75 Q10,55 40,55 Q70,55 70,75" fill="rgba(150,120,180,0.3)" stroke="rgba(150,120,180,0.6)" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <span class="photo-label">Groom's Photo</span>
+            </div>
+            <div class="photo-sparkle s1"></div>
+            <div class="photo-sparkle s2"></div>
+            <div class="photo-sparkle s3"></div>
+          </div>
+          <h3 class="couple-name">Arjun Mehta</h3>
+          <p class="couple-desc">A gentle soul with passion and purpose, whose laugh is the music of life. Son of Mr. & Mrs. Vijay Mehta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 3: OUR STORY -->
+  <!-- ══════════════════════════════════════ -->
+  <section id="story" class="section">
+    <div class="story-bg"></div>
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="eyebrow">Our Journey</p>
+        <h2 class="section-title">A Story Written in Stars</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item reveal-left" data-index="1">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="12" fill="#c9748a" opacity="0.8"/><circle cx="20" cy="20" r="6" fill="#fff"/></svg>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-image placeholder-img">
+              <span>📸 First Meeting</span>
+            </div>
+            <div class="timeline-text">
+              <span class="timeline-date">March 2021</span>
+              <h3>The First Hello</h3>
+              <p>Fate conspired over coffee at a mutual friend's gathering. One smile. That's all it took.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-right" data-index="2">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="12" fill="#9b72cf" opacity="0.8"/><circle cx="20" cy="20" r="6" fill="#fff"/></svg>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-image placeholder-img">
+              <span>🌸 First Date</span>
+            </div>
+            <div class="timeline-text">
+              <span class="timeline-date">June 2021</span>
+              <h3>Under the Blossoms</h3>
+              <p>A walk through Lalbagh gardens. Cherry blossoms in full bloom. Conversations that never wanted to end.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-left" data-index="3">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="12" fill="#e8a04c" opacity="0.8"/><circle cx="20" cy="20" r="6" fill="#fff"/></svg>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-image placeholder-img">
+              <span>🌊 Adventures Together</span>
+            </div>
+            <div class="timeline-text">
+              <span class="timeline-date">December 2022</span>
+              <h3>Adventures & Sunsets</h3>
+              <p>From the backwaters of Kerala to the peaks of Himachal — every adventure made us fall deeper.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-right" data-index="4">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="12" fill="#c9748a" opacity="0.8"/><circle cx="20" cy="20" r="6" fill="#fff"/></svg>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-image placeholder-img">
+              <span>💍 The Proposal</span>
+            </div>
+            <div class="timeline-text">
+              <span class="timeline-date">February 2025</span>
+              <h3>He Said the Words</h3>
+              <p>Under a canopy of stars at Mahabalipuram, with roses and a ring — she said yes with tears of joy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 4: SAVE THE DATE / COUNTDOWN -->
+  <!-- ══════════════════════════════════════ -->
+  <section id="countdown" class="section">
+    <div class="countdown-bg">
+      <div class="countdown-particles" id="countdownParticles"></div>
+      <div class="countdown-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="countdown-content">
+        <p class="eyebrow light reveal-up">Mark Your Calendar</p>
+        <h2 class="countdown-heading reveal-up">Save the Date</h2>
+        <div class="countdown-date reveal-up">February 14, 2026</div>
+        <div class="countdown-timer reveal-up" id="countdownTimer">
+          <div class="timer-block">
+            <span class="timer-num" id="days">00</span>
+            <span class="timer-label">Days</span>
+          </div>
+          <div class="timer-sep">:</div>
+          <div class="timer-block">
+            <span class="timer-num" id="hours">00</span>
+            <span class="timer-label">Hours</span>
+          </div>
+          <div class="timer-sep">:</div>
+          <div class="timer-block">
+            <span class="timer-num" id="minutes">00</span>
+            <span class="timer-label">Minutes</span>
+          </div>
+          <div class="timer-sep">:</div>
+          <div class="timer-block">
+            <span class="timer-num" id="seconds">00</span>
+            <span class="timer-label">Seconds</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 5: WEDDING EVENTS -->
+  <!-- ══════════════════════════════════════ -->
+  <section id="events" class="section">
+    <div class="section-bg-pattern"></div>
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="eyebrow">Join the Celebration</p>
+        <h2 class="section-title">Wedding Festivities</h2>
+        <p class="section-subtitle">Five days of love, laughter, and lifelong memories</p>
+      </div>
+      <div class="events-grid">
+
+        <div class="event-card reveal-up" style="--delay:0s" data-event="engagement">
+          <div class="event-icon">💍</div>
+          <div class="event-badge">Day 1</div>
+          <h3 class="event-name">Engagement Ceremony</h3>
+          <div class="event-details">
+            <div class="event-detail"><span class="detail-icon">📅</span> Feb 10, 2026</div>
+            <div class="event-detail"><span class="detail-icon">⏰</span> 6:00 PM onwards</div>
+            <div class="event-detail"><span class="detail-icon">📍</span> Sharma Residence, Anna Nagar</div>
+          </div>
+          <div class="event-footer">Ring Exchange & Blessings</div>
+        </div>
+
+        <div class="event-card reveal-up" style="--delay:0.1s" data-event="haldi">
+          <div class="event-icon">🌼</div>
+          <div class="event-badge">Day 2</div>
+          <h3 class="event-name">Haldi Ceremony</h3>
+          <div class="event-details">
+            <div class="event-detail"><span class="detail-icon">📅</span> Feb 11, 2026</div>
+            <div class="event-detail"><span class="detail-icon">⏰</span> 10:00 AM onwards</div>
+            <div class="event-detail"><span class="detail-icon">📍</span> Mehta Residence, T. Nagar</div>
+          </div>
+          <div class="event-footer">Turmeric & Blessings</div>
+        </div>
+
+        <div class="event-card reveal-up" style="--delay:0.2s" data-event="mehendi">
+          <div class="event-icon">🎨</div>
+          <div class="event-badge">Day 3</div>
+          <h3 class="event-name">Mehendi Evening</h3>
+          <div class="event-details">
+            <div class="event-detail"><span class="detail-icon">📅</span> Feb 12, 2026</div>
+            <div class="event-detail"><span class="detail-icon">⏰</span> 5:00 PM onwards</div>
+            <div class="event-detail"><span class="detail-icon">📍</span> The Leela Terrace Garden</div>
+          </div>
+          <div class="event-footer">Henna Art & Music Night</div>
+        </div>
+
+        <div class="event-card reveal-up featured-card" style="--delay:0.3s" data-event="wedding">
+          <div class="featured-glow"></div>
+          <div class="event-icon">🕌</div>
+          <div class="event-badge featured-badge">The Wedding</div>
+          <h3 class="event-name">Wedding Ceremony</h3>
+          <div class="event-details">
+            <div class="event-detail"><span class="detail-icon">📅</span> Feb 14, 2026</div>
+            <div class="event-detail"><span class="detail-icon">⏰</span> Muhurtham: 9:30 AM</div>
+            <div class="event-detail"><span class="detail-icon">📍</span> Grand Leela Palace, Chennai</div>
+          </div>
+          <div class="event-footer">Sacred Vows & Saptapadi</div>
+        </div>
+
+        <div class="event-card reveal-up" style="--delay:0.4s" data-event="reception">
+          <div class="event-icon">🥂</div>
+          <div class="event-badge">Day 5</div>
+          <h3 class="event-name">Grand Reception</h3>
+          <div class="event-details">
+            <div class="event-detail"><span class="detail-icon">📅</span> Feb 15, 2026</div>
+            <div class="event-detail"><span class="detail-icon">⏰</span> 7:00 PM onwards</div>
+            <div class="event-detail"><span class="detail-icon">📍</span> Leela Convention Centre</div>
+          </div>
+          <div class="event-footer">Dinner & Celebrations</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 6: PHOTO GALLERY -->
+  <!-- ══════════════════════════════════════ -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="eyebrow">Our Moments</p>
+        <h2 class="section-title">Captured in Time</h2>
+      </div>
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item gi-1 reveal-scale" data-src="1">
+          <div class="gallery-placeholder">
+            <span>📸</span><p>Pre-Wedding Photo 1</p>
+          </div>
+          <div class="gallery-overlay">
+            <span class="gallery-expand">⊕</span>
+          </div>
+        </div>
+        <div class="gallery-item gi-2 reveal-scale" data-src="2">
+          <div class="gallery-placeholder">
+            <span>📸</span><p>Pre-Wedding Photo 2</p>
+          </div>
+          <div class="gallery-overlay">
+            <span class="gallery-expand">⊕</span>
+          </div>
+        </div>
+        <div class="gallery-item gi-3 reveal-scale" data-src="3">
+          <div class="gallery-placeholder">
+            <span>📸</span><p>Pre-Wedding Photo 3</p>
+          </div>
+          <div class="gallery-overlay">
+            <span class="gallery-expand">⊕</span>
+          </div>
+        </div>
+        <div class="gallery-item gi-4 reveal-scale" data-src="4">
+          <div class="gallery-placeholder">
+            <span>📸</span><p>Pre-Wedding Photo 4</p>
+          </div>
+          <div class="gallery-overlay">
+            <span class="gallery-expand">⊕</span>
+          </div>
+        </div>
+        <div class="gallery-item gi-5 reveal-scale" data-src="5">
+          <div class="gallery-placeholder">
+            <span>📸</span><p>Pre-Wedding Photo 5</p>
+          </div>
+          <div class="gallery-overlay">
+            <span class="gallery-expand">⊕</span>
+          </div>
+        </div>
+        <div class="gallery-item gi-6 reveal-scale" data-src="6">
+          <div class="gallery-placeholder">
+            <span>📸</span><p>Pre-Wedding Photo 6</p>
+          </div>
+          <div class="gallery-overlay">
+            <span class="gallery-expand">⊕</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightboxClose">✕</button>
+      <button class="lightbox-prev" id="lightboxPrev">‹</button>
+      <button class="lightbox-next" id="lightboxNext">›</button>
+      <div class="lightbox-content">
+        <div class="lightbox-placeholder">
+          <span>📸</span>
+          <p>Photo Preview</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 7: VENUE -->
+  <!-- ══════════════════════════════════════ -->
+  <section id="venue" class="section">
+    <div class="venue-clouds">
+      <div class="vcloud vc1"></div>
+      <div class="vcloud vc2"></div>
+      <div class="vcloud vc3"></div>
+    </div>
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="eyebrow">Find Your Way</p>
+        <h2 class="section-title">The Venue</h2>
+      </div>
+      <div class="venue-layout">
+        <div class="venue-info reveal-left">
+          <div class="venue-card">
+            <div class="venue-icon">🏰</div>
+            <h3>Grand Leela Palace</h3>
+            <p class="venue-address">No. 1, Leela Palace Road,<br>Adyar, Chennai – 600020</p>
+            <div class="venue-features">
+              <span>🎊 Grand Ballroom</span>
+              <span>🌳 Garden Lawn</span>
+              <span>🅿️ Valet Parking</span>
+              <span>🍽️ Catered Cuisine</span>
+            </div>
+            <a class="venue-directions-btn" href="https://maps.google.com/?q=Grand+Leela+Palace+Chennai" target="_blank">
+              Get Directions →
+            </a>
+          </div>
+        </div>
+        <div class="venue-map-wrap reveal-right">
+          <div class="map-pin-overlay">
+            <div class="map-pin animate-pin">
+              <div class="pin-dot"></div>
+              <div class="pin-pulse"></div>
+            </div>
+          </div>
+          <iframe
+            class="venue-map"
+            src="https://maps.google.com/maps?q=The+Leela+Palace+Chennai&output=embed"
+            allowfullscreen
+            loading="lazy"
+            title="Wedding Venue Map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 8: RSVP -->
+  <!-- ══════════════════════════════════════ -->
+  <section id="rsvp" class="section">
+    <div class="rsvp-bg">
+      <div class="rsvp-petals-container" id="rsvpPetals"></div>
+    </div>
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="eyebrow">You're Invited</p>
+        <h2 class="section-title">RSVP</h2>
+        <p class="section-subtitle">Kindly respond by January 31, 2026</p>
+      </div>
+      <div class="rsvp-form-wrap reveal-up">
+        <form id="rsvpForm" class="rsvp-form" onsubmit="handleRSVP(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="guestName">Full Name</label>
+              <input type="text" id="guestName" placeholder="Your beautiful name" required />
+              <span class="form-line"></span>
+            </div>
+            <div class="form-group">
+              <label for="guestPhone">Phone Number</label>
+              <input type="tel" id="guestPhone" placeholder="+91 00000 00000" />
+              <span class="form-line"></span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="guestCount">Number of Guests</label>
+              <input type="number" id="guestCount" min="1" max="10" placeholder="1" required />
+              <span class="form-line"></span>
+            </div>
+            <div class="form-group">
+              <label>Will you attend?</label>
+              <div class="attend-toggle">
+                <label class="toggle-opt">
+                  <input type="radio" name="attend" value="yes" required />
+                  <span class="toggle-btn yes-btn">💕 Joyfully Yes!</span>
+                </label>
+                <label class="toggle-opt">
+                  <input type="radio" name="attend" value="no" />
+                  <span class="toggle-btn no-btn">😢 Regretfully No</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group full-width">
+            <label for="guestMessage">Leave a Blessing (Optional)</label>
+            <textarea id="guestMessage" placeholder="Share your love and wishes for the couple…" rows="3"></textarea>
+            <span class="form-line"></span>
+          </div>
+          <button type="submit" class="rsvp-submit-btn" id="rsvpBtn">
+            <span class="btn-text">Send Your Love 💌</span>
+            <span class="btn-sparkle"></span>
+          </button>
+        </form>
+        <div class="rsvp-success hidden" id="rsvpSuccess">
+          <div class="success-hearts">💕</div>
+          <h3>Thank You!</h3>
+          <p>Your RSVP has been received. We can't wait to celebrate with you!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 9: THANK YOU -->
+  <!-- ══════════════════════════════════════ -->
+  <section id="thankyou" class="section">
+    <div class="thankyou-bg">
+      <div class="floating-hearts-container" id="floatingHearts"></div>
+    </div>
+    <div class="container">
+      <div class="thankyou-content">
+        <div class="thankyou-couple-photo reveal-up">
+          <div class="photo-ring outer"></div>
+          <div class="couple-photo placeholder large-photo">
+            <div class="photo-placeholder-icon">
+              <svg viewBox="0 0 120 80" fill="none">
+                <circle cx="35" cy="30" r="14" fill="rgba(200,140,160,0.3)" stroke="rgba(200,140,160,0.6)" stroke-width="1.5"/>
+                <path d="M8,70 Q8,50 35,50 Q62,50 62,70" fill="rgba(200,140,160,0.2)" stroke="rgba(200,140,160,0.4)" stroke-width="1"/>
+                <circle cx="85" cy="30" r="14" fill="rgba(150,120,180,0.3)" stroke="rgba(150,120,180,0.6)" stroke-width="1.5"/>
+                <path d="M58,70 Q58,50 85,50 Q112,50 112,70" fill="rgba(150,120,180,0.2)" stroke="rgba(150,120,180,0.4)" stroke-width="1"/>
+              </svg>
+            </div>
+            <span class="photo-label">Priya & Arjun</span>
+          </div>
+        </div>
+        <div class="thankyou-text reveal-up">
+          <h2 class="thankyou-title">With All Our Love</h2>
+          <p class="thankyou-message">
+            Your presence on our special day would mean the world to us.<br/>
+            Thank you for being part of our forever story.
+          </p>
+          <div class="thankyou-names">— Priya &amp; Arjun —</div>
+          <div class="thankyou-bottom-ornament">
+            <svg viewBox="0 0 200 30" fill="none">
+              <path d="M0,15 Q50,2 100,15 Q150,28 200,15" stroke="rgba(200,140,160,0.5)" stroke-width="1" fill="none"/>
+              <circle cx="100" cy="15" r="4" fill="rgba(200,140,160,0.7)"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- FOOTER -->
+  <!-- ══════════════════════════════════════ -->
+  <footer class="site-footer">
+    <p>Priya &amp; Arjun · February 14, 2026 · Chennai</p>
+    <p class="footer-sub">Made with 💕 for our forever</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="animations.js"></script>
+  <script src="scroll-effects.js"></script>
+</body>
+</html>
